@@ -1,10 +1,5 @@
 # Gitlab Template
 
-[![Build Status](https://travis-ci.org/Data-Science-Platform/gitlab-template.svg?branch=master)](https://travis-ci.org/FRosner/gitlab-template)
-[![codecov](https://codecov.io/gh/Data-Science-Platform/gitlab-template/branch/master/graph/badge.svg)](https://codecov.io/gh/FRosner/gitlab-template)
-[![Docker Pulls](https://img.shields.io/docker/pulls/data-science-platform/gitlab-template.svg?maxAge=2592000)](https://hub.docker.com/r/frosner/gitlab-template/)
-[![Docker Layers](https://images.microbadger.com/badges/image/data-science-platform/gitlab-template.svg)](https://microbadger.com/images/frosner/gitlab-template "Get your own image badge on microbadger.com")
-
 ## Usage
 
 ```sh

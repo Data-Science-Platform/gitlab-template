@@ -21,7 +21,7 @@ lazy val root = (project in file("."))
     name := "gitlab-template",
     startYear := Some(2017),
     description := "Rendering your authorized_keys files based on Gitlab since 2017!",
-    homepage := Some(url(s"https://github.com/FRosner/gitlab-template")),
+    homepage := Some(url(s"https://github.com/Data-Science-Platform/gitlab-template")),
     licenses += "Apache 2" -> url("https://www.apache.org/licenses/LICENSE-2.0"),
     // Release settings: Publish maven style, sign our releases, and define the release steps
     publishMavenStyle := true,
@@ -100,11 +100,11 @@ lazy val root = (project in file("."))
     // Build settings for all projects in this build
     inThisBuild(
       List(
-        organization := "frosner",
+        organization := "datascienceplatform",
         scmInfo := Some(ScmInfo(
-          url("https://github.com/FRosner/gitlab-template"),
-          "scm:git:https://github.com/FRosner/gitlab-template.git",
-          Some(s"scm:git:git@github.com:FRosner/gitlab-template.git")
+          url("https://github.com/Data-Science-Platform/gitlab-template"),
+          "scm:git:https://github.com/Data-Science-Platform/gitlab-template.git",
+          Some(s"scm:git:git@github.com:Data-Science-Platform/gitlab-template.git")
         )),
         // Credentials for Travis CI, see
         // http://www.cakesolutions.net/teamblogs/publishing-artefacts-to-oss-sonatype-nexus-using-sbt-and-travis-ci

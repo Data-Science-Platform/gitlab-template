@@ -34,7 +34,8 @@ class GitlabSource(wsClient: StandaloneWSClient,
                    url: String,
                    privateToken: String,
                    onlyActiveUsers: Boolean,
-                   perPage: Int)(implicit ec: ExecutionContext, materializer: Materializer)
+                   perPage: Int,
+                   throttleDuration: Int)(implicit ec: ExecutionContext, materializer: Materializer)
     extends StrictLogging {
 
   def getUsers: EitherT[Future, Error, Set[GitlabUser]] = {
@@ -67,6 +68,7 @@ class GitlabSource(wsClient: StandaloneWSClient,
             .url(s"$url/api/v4/users/${user.id}/keys")
             .withHttpHeaders(("PRIVATE-TOKEN", privateToken))
           logger.debug(s"Requesting public keys for ${user.username}: ${request.url}")
+          Thread.sleep(throttleDuration)
           request.get().map { response =>
             Json
               .fromJson[Set[PublicKey]](response.body[JsValue])

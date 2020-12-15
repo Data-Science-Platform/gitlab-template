@@ -48,7 +48,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
             GitlabUser(1, "usr1"),
             GitlabUser(2, "usr2")
           )
-          new GitlabSource(wsClient, address, "token", false, 100).getUsers.value
+          new GitlabSource(wsClient, address, "token", false, 100, 1).getUsers.value
             .map(_ shouldBe Right(expected))
       }
     }
@@ -76,7 +76,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
             GitlabUser(6, "usr6"),
             GitlabUser(7, "usr7")
           )
-          new GitlabSource(wsClient, address, "token", false, 2).getUsers.value
+          new GitlabSource(wsClient, address, "token", false, 2, 1).getUsers.value
             .map(_ shouldBe Right(expected))
       }
     }
@@ -97,7 +97,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
     } { implicit ec => implicit materializer =>
       {
         case (wsClient, address) =>
-          new GitlabSource(wsClient, address, "token", false, 100).getUsers.value
+          new GitlabSource(wsClient, address, "token", false, 100, 1).getUsers.value
             .map(_ shouldBe a[Left[_, _]])
       }
     }
@@ -107,7 +107,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
     withServerAndClient { RouteDirectives.reject } { implicit ec => implicit materializer =>
       {
         case (wsClient, address) =>
-          new GitlabSource(wsClient, "http://dsafdsgdfsfdsfdsf", "token", false, 100).getUsers.value.failed
+          new GitlabSource(wsClient, "http://dsafdsgdfsfdsfdsf", "token", false, 100, 1).getUsers.value.failed
             .map(_ shouldBe a[UnknownHostException])
       }
     }
@@ -135,7 +135,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
             "usr1" -> Set("key1", "key2"),
             "usr2" -> Set("key3")
           )
-          new GitlabSource(wsClient, address, "token", false, 100)
+          new GitlabSource(wsClient, address, "token", false, 100, 1)
             .getSshKeys(users)
             .value
             .map(_ shouldBe Right(expected))
@@ -153,7 +153,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
     } { implicit ec => implicit materializer =>
       {
         case (wsClient, address) =>
-          new GitlabSource(wsClient, address, "token", false, 100)
+          new GitlabSource(wsClient, address, "token", false, 100, 1)
             .getSshKeys(Set(GitlabUser(1, "usr1")))
             .value
             .map(_ shouldBe a[Left[_, _]])
@@ -165,7 +165,7 @@ class GitlabSourceSpec extends FlatSpec with Matchers with HttpTests {
     withServerAndClient { RouteDirectives.reject } { implicit ec => implicit materializer =>
       {
         case (wsClient, address) =>
-          new GitlabSource(wsClient, address, "token", false, 100)
+          new GitlabSource(wsClient, address, "token", false, 100, 1)
             .getSshKeys(Set(GitlabUser(1, "usr1")))
             .value
             .failed

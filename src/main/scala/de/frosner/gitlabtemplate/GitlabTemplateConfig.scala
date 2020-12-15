@@ -22,6 +22,6 @@ case class PrivateTokenAuthConfig(enabled: Boolean, token: String)
 
 case class SinkConfig(filesystem: FilesystemConfig)
 
-case class GitlabConfig(onlyActiveUsers: Boolean, privateToken: String, url: String, perPage: Int, throttleDuration: Int)
+case class GitlabConfig(onlyActiveUsers: Boolean, privateToken: String, url: String, perPage: Int, throttleDuration: Long)
 
 case class FilesystemConfig(path: Path, publicKeysFile: String, createEmptyKeyFile: Boolean)

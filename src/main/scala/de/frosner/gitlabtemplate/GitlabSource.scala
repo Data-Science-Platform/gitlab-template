@@ -35,7 +35,7 @@ class GitlabSource(wsClient: StandaloneWSClient,
                    privateToken: String,
                    onlyActiveUsers: Boolean,
                    perPage: Int,
-                   throttleDuration: Int)(implicit ec: ExecutionContext, materializer: Materializer)
+                   throttleDuration: Long)(implicit ec: ExecutionContext, materializer: Materializer)
     extends StrictLogging {
 
   def getUsers: EitherT[Future, Error, Set[GitlabUser]] = {
